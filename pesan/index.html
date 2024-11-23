@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan Tiket</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 100px;
+            background-color: #f4f4f9;
+        }
+        .form-container, .result-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Styling untuk tombol kirim */
+        button[type="submit"],
+        button[type="button"] {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button[type="submit"]:hover,
+        button[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling untuk hasil data yang dikirim */
+        .result-container {
+            display: none;
+        }
+
+        /* Styling untuk link Home */
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="form-container">
+        <h2>Form Pemesanan Tiket</h2>
+        <form id="ticketForm">
+            <label for="nama">Nama Lengkap:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="nik">NIK KTP:</label>
+            <input type="number" id="nik" name="nik" min="3" required>
+
+            <label for="no_hp">Nomor HP:</label>
+            <input type="number" id="no_hp" name="no_hp" min="3" required>
+
+            <label for="terminal_naik">Terminal Naik:</label>
+            <select id="terminal_naik" name="terminal_naik" required>
+                <option value="" disabled selected>Pilih Terminal Naik</option>
+                <option value="Terminal Bandung">Terminal Bandung</option>
+                <option value="Terminal Bekasi">Terminal Bekasi</option>
+                <option value="Terminal Cikarang">Terminal Cikarang</option>
+            </select>
+
+            <label for="terminal_turun">Terminal Turun:</label>
+            <select id="terminal_turun" name="terminal_turun" required>
+                <option value="" disabled selected>Pilih Terminal Turun</option>
+                <option value="Terminal Karawang">Terminal Karawang</option>
+                <option value="Terminal Jakarta">Terminal Jakarta</option>
+                <option value="Terminal Bali">Terminal Bali</option>
+            </select>
+
+            <label for="jam_keberangkatan">Jam Keberangkatan:</label>
+            <select id="jam_keberangkatan" name="jam_keberangkatan" required>
+                <option value="" disabled selected>Pilih Jam Keberangkatan</option>
+                <option value="06:00">06:00</option>
+                <option value="09:00">09:00</option>
+                <option value="12:00">12:00</option>
+                <option value="15:00">15:00</option>
+                <option value="18:00">18:00</option>
+                <option value="21:00">21:00</option>
+            </select>
+
+            <button type="submit">Kirim</button>
+            <a href="/home/index.html" class="home-link">Kembali ke Beranda</a>
+        </form>
+    </div>
+
+    <!-- Kontainer untuk menampilkan hasil pengisian form -->
+    <div class="result-container" id="result-container">
+        <h2>Data Berhasil Dikirim</h2>
+        <p><strong>Nama Lengkap:</strong> <span id="result-nama"></span></p>
+        <p><strong>NIK KTP:</strong> <span id="result-nik"></span></p>
+        <p><strong>Nomor HP:</strong> <span id="result-no_hp"></span></p>
+        <p><strong>Terminal Naik:</strong> <span id="result-terminal_naik"></span></p>
+        <p><strong>Terminal Turun:</strong> <span id="result-terminal_turun"></span></p>
+        <p><strong>Jam Keberangkatan:</strong> <span id="result-jam_keberangkatan"></span></p>
+        <button type="button" id="back-button">Kembali Ke Form Pemesanan</button>
+        <a href="/home/index.html" class="home-link">Kembali ke Beranda</a>
+    </div>
+
+    <script>
+        // Ambil elemen form dan kontainer hasil
+        const form = document.getElementById('ticketForm');
+        const formContainer = document.getElementById('form-container');
+        const resultContainer = document.getElementById('result-container');
+        const backButton = document.getElementById('back-button');
+
+        // Tambahkan event listener untuk menangani submit form
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form agar tidak langsung dikirim
+
+            // Ambil nilai dari setiap input
+            document.getElementById('result-nama').innerText = form.nama.value;
+            document.getElementById('result-nik').innerText = form.nik.value;
+            document.getElementById('result-no_hp').innerText = form.no_hp.value;
+            document.getElementById('result-terminal_naik').innerText = form.terminal_naik.value;
+            document.getElementById('result-terminal_turun').innerText = form.terminal_turun.value;
+            document.getElementById('result-jam_keberangkatan').innerText = form.jam_keberangkatan.value;
+
+            // Sembunyikan form dan tampilkan hasil
+            formContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+        });
+
+        // Tambahkan event listener untuk tombol kembali
+        backButton.addEventListener('click', function() {
+            // Kembali ke form dengan menyembunyikan hasil dan menampilkan form
+            resultContainer.style.display = 'none';
+            formContainer.style.display = 'block';
+            form.reset(); // Reset form untuk mengosongkan input
+        });
+    </script>
+</body>
+</html>

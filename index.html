@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Diri</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h1 {
+            font-size: 1.5rem;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* Biodata Section */
+        .biodata {
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 3rem auto;
+        }
+
+        .biodata img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .biodata h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .biodata table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .biodata table td {
+            padding: 10px;
+            vertical-align: top;
+            color: #666;
+        }
+
+        .biodata table td.label {
+            font-weight: bold;
+            color: #333;
+            width: 35%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a class="navbar-brand" href="/home/index.html">
+            <img src="/foto/lugu.png" alt="Logo Travelix" height="50px">
+        </a>
+        <ul>
+            <li><a href="/home/index.html">Beranda</a></li>
+            <li><a href="/tentangsaya/index.html">Tentang Saya</a></li>
+            <li><a href="/pesan/index.html">Pesan Sekarang</a></li>
+        </ul>
+    </div>
+
+    <!-- Biodata Section -->
+    <div class="biodata">
+        <img src="/foto/pp.jpg" alt="Foto Profil">
+        <h1>MUHAMMAD RIZKY KURNIAWAN</h1>
+
+        <table>
+            <tr>
+                <td class="label">Tempat, Tanggal Lahir</td>
+                <td>: Bekasi, 15 Januari 2005</td>
+            </tr>
+            <tr>
+                <td class="label">Alamat</td>
+                <td>: Kedungwaringin Kab.Bekasi</td>
+            </tr>
+            <tr>
+                <td class="label">Pendidikan</td>
+                <td>: SMK ROSMA</td>
+            </tr>
+            <tr>
+                <td class="label">Pekerjaan</td>
+                <td>: Food and Delivery</td>
+            </tr>
+            <tr>
+                <td class="label">Hobi</td>
+                <td>: Baca Komik</td>
+            </tr>
+            <tr>
+                <td class="label">Email</td>
+                <td>: <a href="mailto:[rizkyykurniawan23@gmail.com]"> rizkyykurniawan23@gmail.com</a></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
